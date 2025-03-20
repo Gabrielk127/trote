@@ -5,9 +5,10 @@ import ReactPlayer from "react-player/youtube";
 
 interface YoutubeVideoProps {
   video: string;
+  playing?: boolean;
 }
 
-const YoutubeVideo = ({ video }: YoutubeVideoProps) => {
+const YoutubeVideo = ({ video, playing = false }: YoutubeVideoProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,9 @@ const YoutubeVideo = ({ video }: YoutubeVideoProps) => {
       <div className="relative w-full max-w-[1000px] aspect-video rounded-xl overflow-hidden">
         <ReactPlayer
           url={video}
-          playing={true}
+          playing={playing}
+          volume={1}
+          muted={false}
           controls={true}
           width="100%"
           height="100%"
